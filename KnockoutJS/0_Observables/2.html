@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Working with observable arrays</title>
+    <script type='text/javascript' src='../JS/knockout-3.5.1.js'></script>
+</head>
+
+<body>
+    <div>
+        <input data-bind='value: newItem, valueUpdate: "afterkeydown"' />
+        <button data-bind="enable: newItem().length > 0" onclick="AddItem()">Add</button>
+        <br />
+        <select multiple="multiple" width="50" data-bind="options: items"> </select>
+    </div>
+</body>
+    <script type="text/javascript">
+      // 可监控数组里的对象中的属性不会成可监控
+    //   var observableArray = ko.observableArray([
+    //     {name:"tom", type:"cat"},
+    //     {name:"jerry", type:"mouse"}
+    //   ]);
+
+    //   observableArray().length
+    //   observableArray()[0]
+
+        var items = ko.observableArray([
+            "A",
+            "B",
+            "C"
+        ]);
+
+        var newItem = ko.observable("");
+
+        var AddItem = function(){
+            if(newItem() != ""){
+                items.push(newItem());
+                newItem("");
+            }
+        };
+
+        ko.applyBindings(items);
+
+    </script>
+</html>

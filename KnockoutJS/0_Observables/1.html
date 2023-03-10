@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Creating view models with observables</title>
+    <script type='text/javascript' src='../JS/knockout-3.5.1.js'></script>
+</head>
+
+<body>
+    <div class="">
+      <!-- 2、使用  -->
+      <input data-bind="value: Name, valueUpdate: "afterkeydown""/>
+      <span data-bind="text:Name">
+    </div>
+    
+</body>
+    <script type="text/javascript">
+      // 1、声明
+      // var personModel = {
+      //   Name:'Tom',
+      //   Age:12
+      // };
+
+      // 声明各属性是可监控的
+      var personModel = {
+        Name:ko.observable('Tom'),
+        Age:ko.observable(12)
+      };
+
+      // 3、激活
+      ko.applyBindings(personModel);
+      // ko.applyBindings(personModel, document.getElementById('Id'));
+    </script>
+</html>
