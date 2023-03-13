@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Writable computed observables</title>
+    <script type='text/javascript' src='../JS/knockout-3.5.1.js'></script>
+</head>
+
+<body>
+    <div class="">
+      <span data-bind="text:firstName"></span>
+      <span data-bind="text:lastName"></span>
+      <input data-bind="textInput:fullName">
+    </div>
+    
+</body>
+    <script type="text/javascript">
+      var personModel = function() {
+        var self = this;
+
+        self.firstName = ko.observable('tom');
+        self.lastName = ko.observable('jerry');
+        self.fullName = ko.pureComputed({
+            read: function(){
+                return self.firstName() + " " + self.lastName();
+            },
+            write: function(value){
+                var lastSpacePos = value.lastIndexOf(" ");
+                if(lastSpacePos > 0){
+                    self.firstName(value.substring(0, lastSpacePos));
+                    self.lastName(value.substring(lastSpacePos + 1));
+                }
+            },
+            owner: self
+        });
+      };
+
+      ko.applyBindings(personModel);
+    </script>
+</html>
