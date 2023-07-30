@@ -1,2 +1,6 @@
 # 忽略KnockoutJS/JS文件夹内容
 KnockoutJS/JS/
+# 忽略EasyUI/JQuery文件夹内容
+EasyUI/JQuery
+# 忽略Canvas/Image文件夹内容
+Canvas/Image

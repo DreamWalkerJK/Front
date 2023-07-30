@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas 学习</title>
+</head>
+
+<body>
+    <!-- canvas 默认宽300，高150 -->
+    <canvas id="canvas" height="800" width="600"></canvas>
+</body>
+    <script type="text/javascript">
+        // 获取dom对象
+        const canvas = document.getElementById("canvas");
+        // 渲染上下文可以画图进行填充，也可以画图后进行stroke()
+        // 通过getContext()方法来获取渲染上下文及其绘画功能
+        const ctx = canvas.getContext('2d'); // 2D图形
+        
+        // 开启新路径
+        ctx.beginPath();
+        // 1.画线段   
+        ctx.moveTo(50, 50);
+        // 定义折点
+        ctx.lineTo(550, 50);
+        // 设置线的颜色
+        ctx.strokeStyle = 'pink';
+        // 设置线的宽度
+        ctx.lineWidth = 20;
+        // 设置线帽 round圆 butt默认 square方
+        ctx.lineCap = 'round';
+        // 设置线段连接处 miter默认 round圆 bevel平直
+        ctx.lineJoin = 'round';
+        // 进行绘制
+        ctx.stroke();
+        // 关闭路径
+        ctx.closePath();
+
+        // 2.三角形
+        ctx.beginPath();
+        ctx.moveTo(300, 100);
+        ctx.lineTo(50, 150);
+        ctx.lineTo(550, 150);
+        // 第四个点要与第一个点的坐标保持一致才能画出三角形
+        ctx.lineTo(300, 100); 
+        ctx.closePath();
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = 'green';
+        ctx.lineJoin = 'miter';
+        ctx.stroke();
+
+        // 3.画矩形
+        ctx.beginPath();
+        // 空心
+        // ctx.strokeRect(50, 200, 500, 50);
+        // 填充
+        ctx.fillStyle = 'skyblue';
+        ctx.fillRect(50, 200, 500, 50); // 起点坐标x,y 宽 高
+        ctx.closePath();
+
+        // 4.画弧线或者圆
+        ctx.beginPath();
+        ctx.arc(300, 400, 100, 0, [(Math.PI) / 180] * 360, true); // 起点坐标x,y 半径，初始角度，结束角度，顺时针或逆时针false/true
+        ctx.stroke();
+        ctx.closePath();
+
+        // // 填充
+        // ctx.beginPath();
+        // ctx.arc(350, 300, 300, 0, [(Math.PI) / 180] * 360);
+        // // 设置透明度
+        // ctx.globalAlpha = 0.3; 
+        // ctx.fillStyle = 'skyblue';
+        // ctx.fill();
+    </script>
+</html>

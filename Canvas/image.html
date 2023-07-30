@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas 图片</title>
+</head>
+
+<body>
+    <!-- canvas 默认宽300，高150 -->
+    <canvas id="canvas"></canvas>
+</body>
+    <script type="text/javascript">
+        const width = window.screen.width;
+        const height = window.screen.height;
+        const canvas = document.getElementById("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+
+        // 创建一个image对象
+        var img = new Image();
+        // 绑定图片
+        img.src = "./Image/1.jpg";
+        // 当图片加载完运行
+        img.onload = function(){
+            // 创建图案
+            // var pattern = ctx.createPattern(img, 'no-repeat');
+            // ctx.fillStyle = pattern;
+            // ctx.fillRect(0,0,width,height);
+            // 绘制图片
+            ctx.drawImage(img, 0, 0, width, height); // 在（0,0）处绘制原图
+        }
+    </script>
+</html>
