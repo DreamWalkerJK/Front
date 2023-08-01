@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文本框 TextBox</title>
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/icon.css">
+    <script type="text/javascript" src="../JQuery/jquery.min.js"></script>
+	<script type="text/javascript" src="../JQuery/jquery.easyui.min.js"></script>
+</head>
+
+<body class="easyui-layout">
+    <input class="easyui-textbox" data-options="iconCls:'icon-search'" style="width:300px">
+    <input id="tb" type="text" style="width: 300px;">
+</body>
+<script type="text/javascript">
+    $('#tb').textbox({
+        buttonText:'Search',
+        iconCls:'icon-man',
+        iconAlign:'left',
+        prompt:'textbox',
+        // multiline:true,
+        // editable:false,
+        // disabled:true
+    });
+
+    $('#tb').textbox({
+        onChange:function(nValue, oValue){
+            alert(oValue + ' ' + nValue);
+        }
+    });
+
+    $('#tb').textbox('initValue', 'aaa'); // 不会触发onChange事件
+</script>
+</html>

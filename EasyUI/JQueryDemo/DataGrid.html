@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>数据网格 DataGrid</title>
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/icon.css">
+    <script type="text/javascript" src="../JQuery/jquery.min.js"></script>
+	<script type="text/javascript" src="../JQuery/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+    <!-- <table class="easyui-datagrid">
+        <thead>
+            <tr>
+                <th data-options="field:'code'">Code</th>
+                <th data-options="field:'name'">Name</th>
+			    <th data-options="field:'price'">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td><td>name1</td><td>2323</td>
+            </tr>
+            <tr>
+                <td>002</td><td>name2</td><td>4612</td>
+            </tr>
+        </tbody>
+    </table> -->
+    <table id="dg"></table>
+    <div id="dgTool">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit', plain:true"></a>
+    </div>
+</body>
+<script type="text/javascript">
+    $('#dg').datagrid({
+        coloums:[
+            [
+                {field:'code', title:'Code', width:100},
+                {field:'name',title:'Name',width:100},
+		        {field:'age',title:'age',width:100,align:'right'}
+            ]
+        ],
+         toolbar:'#dgTool',
+        // pagination: true,
+        // pageList:[10,50,100],
+        // pageNumber:1,
+        // pageSize:50,
+        rownumbers:true,
+        // singleSelect: true
+    });
+
+    
+
+    $(document).ready(function(){
+        var data = {
+            total:3,
+            rows:[
+                {'code':'A', 'name':'jerry', 'age':'10'},
+                {'code':'B', 'name':'tom', 'age':'10'},
+                {'code':'C', 'name':'rose', 'age':'8'}
+            ]
+        };
+        $('#dg').datagrid('loadData',data);
+    });
+</script>
+</html>

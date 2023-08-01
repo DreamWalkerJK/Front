@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>面板 Panel</title>
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../JQuery/themes/icon.css">
+    <script type="text/javascript" src="../JQuery/jquery.min.js"></script>
+	<script type="text/javascript" src="../JQuery/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="p" class="easyui-panel" title="My Panel" style="width:500px;height:150px;padding:10px;background:#fafafa;" 
+        data-options="iconCls:'icon-save',closable:true,collapsible:true,minimizable:true,maximizable:true">
+        <p>panel content.</p>
+        <p>panel content.</p>
+    </div> -->
+
+    <div id="p" style="padding:10px;">
+        <p>panel content.</p>
+        <p>panel content.</p>
+    </div>
+</body>
+<script type="text/javascript">
+    $("#p").panel({
+        width:500,
+        height:500,
+        title:'My Panel',
+        tools:[
+            {
+                iconCls:'icon-add',
+                handler:function(){
+                    alert('add');
+                }
+            },
+            {
+                iconCls:'icon-save',
+                handler:function(){
+                    alert('save');
+                }
+            }
+        ],
+        collapsed:true
+    });
+
+    $('#p').panel('move',{
+        left:100,
+        top:100
+    });
+</script>
+</html>
