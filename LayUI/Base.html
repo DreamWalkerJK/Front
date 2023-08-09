@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LayUI - DropDown 下拉菜单</title>
+    <link rel="stylesheet" type="text/css" href="../LayUI/Resources/layui/css/layui.css">
+    <script type="text/javascript" src="../LayUI/Resources/layui/jquery-3.7.0.min.js"></script>
+	<script type="text/javascript" src="../LayUI/Resources/layui/layui.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // layui.data(table, settings) = localStorage，数据在浏览器中持久化存储，物理删除
+        // layui.sessionData(table, settings) = sessionStorage, 数据在浏览中的会话性存储，页面关闭失效
+
+        // 增，表不存在就自动建立
+        layui.data('test',{
+            key: 'A01',
+            value: 'tom'
+        });
+        layui.data('test',{
+            key: 'A02',
+            value: 'jerry'
+        });
+
+        // 删
+        layui.data('test',{
+            key: 'A01',
+            remove: true
+        });
+        // 删除表
+        // layui.data('test', null);
+
+        // 查
+        var test = layui.data('test');
+        console.log(test.A02);
+
+        // 浏览器信息
+        var device = layui.device();
+        console.log(device);
+    </script>
+</body>
+</html>

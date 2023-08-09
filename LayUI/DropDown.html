@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LayUI - DropDown 下拉菜单</title>
+    <link rel="stylesheet" type="text/css" href="../LayUI/Resources/layui/css/layui.css">
+    <script type="text/javascript" src="../LayUI/Resources/layui/jquery-3.7.0.min.js"></script>
+	<script type="text/javascript" src="../LayUI/Resources/layui/layui.js"></script>
+</head>
+
+<body>
+    <div class="layui-btn-container">
+        <button class="layui-btn demo-dropdown-base">
+            <span>下拉菜单</span>
+            <i class="layui-icon layui-icon-down layui-font-12"></i>
+        </button>
+        <button class="layui-btn layui-btn-primary demo-dropdown-base">
+            <span>下拉菜单</span>
+            <i class="layui-icon layui-icon-down layui-font-12"></i>
+        </button>
+    </div>
+    <div class="layui-inline" style="width: 235px;">
+        <input class="layui-input" id="test" />
+    </div>
+
+    <script type="text/javascript">
+        // $(document).ready(function(){
+        // });
+    
+        layui.use(function(){
+            var layer = layui.layer;
+            var dropdown = layui.dropdown;
+            var menu = [
+                {id: 1, title: 'Base Menu 1'},
+                {id: 2, title: 'Base Menu 2'},
+                {id: 3, title: 'Base Menu 3'}
+            ];
+            
+            dropdown.render({
+                elem:'.demo-dropdown-base',
+                data: menu,
+                click:function(obj){
+                    this.elem.find('span').text(obj.title);
+                }
+            });
+
+            dropdown.render({
+                elem:'#test',
+                data:menu,
+                click: function(obj){
+                    this.elem.val(obj.title);
+                    $.ajax({
+                        type:'post',
+                        dataType:'json',
+                        url:'http://localhost:5282/weatherforecast/Test/',
+                        data:{ id:obj.id},
+                        async:true,
+                        success:function(res){
+                            layer.msg('success');
+                        }
+                    });
+                },
+                style:'width:235px;'
+            });
+        });
+    </script>
+</body>
+</html>

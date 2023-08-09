@@ -4,3 +4,5 @@ KnockoutJS/JS/
 EasyUI/JQuery
 # 忽略Canvas/Image文件夹内容
 Canvas/Image
+# 忽略LayUI/Resources文件夹内容
+LayUI/Resources
